@@ -1,3 +1,4 @@
+import { configureStore } from '@reduxjs/toolkit';
 import { TodoType } from '../types/types';
 
 type initTodosState = {
@@ -12,3 +13,12 @@ const initTodos: initTodosState = {
     { id: 4, title: 'Buy Bread', isDone: true }, // id to dele
   ],
 };
+
+export const store = configureStore({
+  reducer: {},
+});
+
+// Infer the `RootState` and `AppDispatch` types from the store itself
+export type RootState = ReturnType<typeof store.getState>;
+// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
+export type AppDispatch = typeof store.dispatch;
