@@ -1,38 +1,15 @@
 /* eslint-disable no-case-declarations */
-import { useReducer, useState } from 'react';
+
 import OneTodo from './OneTodo';
 import AddTodo from './AddTodo';
-
-// aprasyti tipa initTodos
-
-// iskelti initTodos i store/redux.ts
-
-type TodoType = {
-  id: number;
-  title: string;
-  isDone: boolean;
-};
-
-const initTodos: TodoType[] = [
-  { id: 1, title: 'Pull ups', isDone: false },
-  { id: 2, title: 'Read a book', isDone: true },
-  { id: 3, title: 'Buy Bread', isDone: false }, // idToToggle === 3
-  { id: 4, title: 'Buy Bread', isDone: true }, // id to dele
-];
-
-let countId = 5;
-
-const ACT = {
-  DEL: 'DEL',
-  add: 'ADD',
-  toggle: 'TOGGLE',
-};
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/redux';
 
 export default function TodoApp() {
   // pasitikrinti ar turiu todos localStorage, jei turiu imu is storage, jei ne initTodos
   // const [state, dispach] = useReducer(todoReducer, initTodos);
-
-  // console.log('state ===', state);
+  const state = useSelector((state: RootState) => state.todos.todosArr);
+  console.log('state ===', state);
 
   const handleDelete = (idToDelete) => {
     // dispach({ type: ACT.DEL, payload: idToDelete });
@@ -50,9 +27,9 @@ export default function TodoApp() {
 
   // const handleUpdate = () => {};
 
-  // const all = state.length;
+  const all = state.length;
 
-  // const complete = state.filter((tObj) => tObj.isDone).length;
+  const complete = state.filter((tObj) => tObj.isDone).length;
 
   return (
     <div>

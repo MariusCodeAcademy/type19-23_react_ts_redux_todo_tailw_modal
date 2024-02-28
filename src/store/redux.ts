@@ -2,11 +2,11 @@ import { configureStore, createSlice } from '@reduxjs/toolkit';
 import { TodoType } from '../types/types';
 
 type initTodosState = {
-  todos: TodoType[];
+  todosArr: TodoType[];
 };
 
 const initTodos: initTodosState = {
-  todos: [
+  todosArr: [
     { id: 1, title: 'Pull ups', isDone: false },
     { id: 2, title: 'Read a book', isDone: true },
     { id: 3, title: 'Buy Bread', isDone: false }, // idToToggle === 3
