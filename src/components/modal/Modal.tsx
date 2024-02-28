@@ -1,6 +1,12 @@
 import Button from '../UI/Button';
 
 function Modal() {
+  const toShow = 'paimti reiksme is redux';
+
+  // paspaudus Close iskviesti veiksma is modal hide()
+
+  if (toShow === false) return null;
+
   return (
     <div>
       <div className='backdrop bg-slate-500/30 fixed inset-0'></div>

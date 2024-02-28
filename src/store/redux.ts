@@ -1,6 +1,7 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit';
 import { TodoType } from '../types/types';
 import type { PayloadAction } from '@reduxjs/toolkit';
+import modalReducer from './_modal';
 
 type initTodosState = {
   todosArr: TodoType[];
@@ -54,6 +55,7 @@ const todosSlice = createSlice({
 export const store = configureStore({
   reducer: {
     todos: todosSlice.reducer,
+    modal: modalReducer,
   },
 });
 
