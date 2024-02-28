@@ -1,11 +1,19 @@
+import { useDispatch } from 'react-redux';
 import { TodoType } from '../../types/types';
 import Button from '../UI/Button';
+import { todoActions } from '../../store/redux';
 
 type OneTodoProps = {
   item: TodoType;
 };
 
 export default function OneTodo({ item }: OneTodoProps) {
+  const dispatch = useDispatch();
+
+  const handleDelete = (id: number) => {
+    dispatch(todoActions.deleteTodo(id));
+  };
+
   return (
     <li className='grid grid-cols-4 gap-2'>
       <div className=''>
@@ -22,7 +30,7 @@ export default function OneTodo({ item }: OneTodoProps) {
         </span>{' '}
       </div>
 
-      <Button onClick={() => {}}>Delete</Button>
+      <Button onClick={() => handleDelete(item.id)}>Delete</Button>
       <Button onClick={() => {}} outline>
         {item.isDone ? 'Undo' : 'Complete'}
       </Button>

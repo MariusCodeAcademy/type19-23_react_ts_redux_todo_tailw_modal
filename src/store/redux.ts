@@ -1,5 +1,6 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit';
 import { TodoType } from '../types/types';
+import type { PayloadAction } from '@reduxjs/toolkit';
 
 type initTodosState = {
   todosArr: TodoType[];
@@ -19,7 +20,9 @@ const todosSlice = createSlice({
   initialState: initTodos,
   reducers: {
     addTodo() {},
-    deleteTodo() {},
+    deleteTodo(state, action: PayloadAction<number>) {
+      console.log('deleting todo', action.payload);
+    },
   },
 });
 
