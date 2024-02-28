@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, createSlice } from '@reduxjs/toolkit';
 import { TodoType } from '../types/types';
 
 type initTodosState = {
@@ -14,9 +14,22 @@ const initTodos: initTodosState = {
   ],
 };
 
-export const store = configureStore({
-  reducer: {},
+const todosSlice = createSlice({
+  name: 'todos',
+  initialState: initTodos,
+  reducers: {
+    addTodo() {},
+    deleteTodo() {},
+  },
 });
+
+export const store = configureStore({
+  reducer: {
+    todos: todosSlice.reducer,
+  },
+});
+
+export const todoActions = todosSlice.actions;
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;
