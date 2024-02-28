@@ -15,11 +15,17 @@ const initTodos: initTodosState = {
   ],
 };
 
+let lastId = 5;
+
 const todosSlice = createSlice({
   name: 'todos',
   initialState: initTodos,
   reducers: {
-    addTodo() {},
+    addTodo(state, action: PayloadAction<string>) {
+      // pasiimti title reiksme is payload
+      // sukurti nauja todo Obj
+      // ikelti tObj i state
+    },
     deleteTodo(state, action: PayloadAction<number>) {
       console.log('deleting todo', action.payload);
       // trinam su filter

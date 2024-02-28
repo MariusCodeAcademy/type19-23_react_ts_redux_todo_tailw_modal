@@ -6,6 +6,7 @@ export default function AddTodo() {
 
   const addTodoHandler = () => {
     // onNewTodo(newTodoVal);
+    // dispatch su redux ir paduodam newTodoVal
     setNewTodoVal('');
   };
 
