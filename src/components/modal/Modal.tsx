@@ -5,6 +5,7 @@ import { modalActions } from '../../store/_modal';
 
 function Modal() {
   const toShow = useSelector((state: RootState) => state.modal.toShow);
+  const text = useSelector((state: RootState) => state.modal.text);
 
   // paspaudus Close iskviesti veiksma is modal hide()
 
@@ -19,7 +20,7 @@ function Modal() {
         className='backdrop bg-slate-500/30 fixed inset-0'></div>
       <div className='bg-white border rounded-lg px-10 py-7 w-96 fixed top-10 left-1/2 -translate-x-1/2'>
         <h2 className='text-lg font-semibold mb-3'>Modal</h2>
-        <p className='text-lg mb-5'>Hello</p>
+        <p className='text-lg mb-5'>{text}</p>
         <div className='flex gap-3 border-t pt-3'>
           <button
             onClick={() => dispatch(modalActions.hide())}

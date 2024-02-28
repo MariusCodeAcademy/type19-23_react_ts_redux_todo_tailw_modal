@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import { TodoType } from '../../types/types';
 import Button from '../UI/Button';
 import { todoActions } from '../../store/redux';
+import { modalActions } from '../../store/_modal';
 
 type OneTodoProps = {
   item: TodoType;
@@ -10,8 +11,9 @@ type OneTodoProps = {
 export default function OneTodo({ item }: OneTodoProps) {
   const dispatch = useDispatch();
 
-  const handleDelete = (id: number) => {
-    dispatch(todoActions.deleteTodo(id));
+  const handleDelete = () => {
+    dispatch(modalActions.show('Are you sure you want to delete?'));
+    // dispatch(todoActions.deleteTodo(item.id));
   };
 
   const handleToggle = () => {
@@ -34,7 +36,7 @@ export default function OneTodo({ item }: OneTodoProps) {
         </span>{' '}
       </div>
 
-      <Button onClick={() => handleDelete(item.id)}>Delete</Button>
+      <Button onClick={handleDelete}>Delete</Button>
       <Button onClick={handleToggle} outline>
         {item.isDone ? 'Undo' : 'Complete'}
       </Button>
