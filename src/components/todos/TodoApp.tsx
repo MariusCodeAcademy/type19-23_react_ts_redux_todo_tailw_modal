@@ -7,7 +7,13 @@ import AddTodo from './AddTodo';
 
 // iskelti initTodos i store/redux.ts
 
-const initTodos = [
+type TodoType = {
+  id: number;
+  title: string;
+  isDone: boolean;
+};
+
+const initTodos: TodoType[] = [
   { id: 1, title: 'Pull ups', isDone: false },
   { id: 2, title: 'Read a book', isDone: true },
   { id: 3, title: 'Buy Bread', isDone: false }, // idToToggle === 3
