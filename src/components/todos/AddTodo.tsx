@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Button from '../UI/Button';
 import { useDispatch } from 'react-redux';
 import { todoActions } from '../../store/redux';
+import { modalActions } from '../../store/_modal';
 
 export default function AddTodo() {
   const [newTodoVal, setNewTodoVal] = useState('');
@@ -14,6 +15,7 @@ export default function AddTodo() {
     dispatch(todoActions.addTodo(newTodoVal));
     // dispatch su redux ir paduodam newTodoVal
     setNewTodoVal('');
+    dispatch(modalActions.show(`New "${newTodoVal}" todo added`));
   };
 
   return (

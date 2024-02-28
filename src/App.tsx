@@ -7,6 +7,7 @@ function App() {
   return (
     <div className='container'>
       <Modal />
+
       <h1 className='text-5xl font-medium underline'>App</h1>
       <TodoApp />
     </div>

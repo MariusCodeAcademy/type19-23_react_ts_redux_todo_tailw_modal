@@ -27,7 +27,9 @@ function Modal() {
             className='px-3 py-1 text-sm uppercase border font-semibold border-red-500 rounded-md'>
             Close
           </button>
-          <button className='px-3 py-1 text-sm uppercase border font-semibold border-green-500 rounded-md'>
+          <button
+            onClick={() => dispatch(modalActions.success())}
+            className='px-3 py-1 text-sm uppercase border font-semibold border-green-500 rounded-md'>
             Confirm
           </button>
         </div>

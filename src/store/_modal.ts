@@ -4,6 +4,7 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 const initModalState = {
   toShow: false,
   text: '',
+  success: false,
 };
 
 const modalSlice = createSlice({
@@ -16,8 +17,12 @@ const modalSlice = createSlice({
     },
     hide(state) {
       state.toShow = false;
+      state.success = false;
     },
-    toggle() {},
+    success(state) {
+      state.toShow = false;
+      state.success = true;
+    },
   },
 });
 

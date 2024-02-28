@@ -1,7 +1,7 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { TodoType } from '../../types/types';
 import Button from '../UI/Button';
-import { todoActions } from '../../store/redux';
+import { RootState, todoActions } from '../../store/redux';
 import { modalActions } from '../../store/_modal';
 
 type OneTodoProps = {
@@ -10,9 +10,13 @@ type OneTodoProps = {
 
 export default function OneTodo({ item }: OneTodoProps) {
   const dispatch = useDispatch();
+  const modalSucess = useSelector((state: RootState) => state.modal.success);
+  console.log('modalSucess ===', modalSucess);
 
   const handleDelete = () => {
     dispatch(modalActions.show('Are you sure you want to delete?'));
+    // ar sekme ar ne
+
     // dispatch(todoActions.deleteTodo(item.id));
   };
 
