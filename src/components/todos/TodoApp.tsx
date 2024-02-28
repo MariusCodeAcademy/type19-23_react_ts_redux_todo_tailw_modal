@@ -28,61 +28,31 @@ const ACT = {
   toggle: 'TOGGLE',
 };
 
-function todoReducer(state, action) {
-  console.log('action ===', action);
-  switch (action.type) {
-    case ACT.DEL:
-      const idToDelete = action.payload;
-      const filtered = state.filter((pObj) => pObj.id !== idToDelete);
-      localStorage.setItem('todos', JSON.stringify(filtered));
-      return filtered;
-    case ACT.add:
-      return [...state, { id: countId++, title: action.payload, isDone: false }];
-    // pasidaryti make done (sunkesnis)
-    case ACT.toggle:
-      const idToToggle = action.payload;
-
-      return state.map((pObj) => {
-        // ar radom ta objekta kuri pakeisti?
-        if (pObj.id === idToToggle) {
-          // grazinti kopija su pakeitimu
-          return { ...pObj, isDone: !pObj.isDone };
-        } else {
-          // grazinti ta pati objekta
-          return pObj;
-        }
-      });
-    default:
-      console.warn('type nerstas', action);
-      return state;
-  }
-}
-
 export default function TodoApp() {
   // pasitikrinti ar turiu todos localStorage, jei turiu imu is storage, jei ne initTodos
-  const [state, dispach] = useReducer(todoReducer, initTodos);
+  // const [state, dispach] = useReducer(todoReducer, initTodos);
 
-  console.log('state ===', state);
+  // console.log('state ===', state);
 
   const handleDelete = (idToDelete) => {
-    dispach({ type: ACT.DEL, payload: idToDelete });
+    // dispach({ type: ACT.DEL, payload: idToDelete });
   };
 
   const handleNewTodo = (newTodoVal) => {
     console.log('ivesta reiksme', newTodoVal);
-    dispach({ type: ACT.add, payload: newTodoVal });
+    // dispach({ type: ACT.add, payload: newTodoVal });
   };
 
   const handleDone = (idToToggle) => {
     console.log('handleDone', idToToggle);
-    dispach({ type: ACT.toggle, payload: idToToggle });
+    // dispach({ type: ACT.toggle, payload: idToToggle });
   };
 
-  const handleUpdate = () => {};
+  // const handleUpdate = () => {};
 
-  const all = state.length;
+  // const all = state.length;
 
-  const complete = state.filter((tObj) => tObj.isDone).length;
+  // const complete = state.filter((tObj) => tObj.isDone).length;
 
   return (
     <div>
@@ -94,7 +64,7 @@ export default function TodoApp() {
         </p>
       </div>
 
-      <AddTodo onNewTodo={handleNewTodo} />
+      <AddTodo />
 
       {state.length === 0 && (
         <p className='text-2xl text-center p-5 border border-indigo-600'>

@@ -1,8 +1,8 @@
 type ButtonProps = {
-  onClick: () => void;
+  onClick?: () => void;
   children: string;
-  outline: boolean;
-  type: 'button' | 'submit' | 'reset';
+  outline?: boolean;
+  type?: 'button' | 'submit' | 'reset';
 };
 
 export default function Button({

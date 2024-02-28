@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import Button from '../UI/Button';
 
-export default function AddTodo({ onNewTodo }) {
+export default function AddTodo() {
   const [newTodoVal, setNewTodoVal] = useState('');
 
   const addTodoHandler = () => {
-    onNewTodo(newTodoVal);
+    // onNewTodo(newTodoVal);
     setNewTodoVal('');
   };
 
