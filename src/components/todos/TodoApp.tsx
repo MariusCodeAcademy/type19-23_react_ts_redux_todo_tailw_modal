@@ -11,22 +11,6 @@ export default function TodoApp() {
   const state = useSelector((state: RootState) => state.todos.todosArr);
   console.log('state ===', state);
 
-  const handleDelete = (idToDelete) => {
-    // dispach({ type: ACT.DEL, payload: idToDelete });
-  };
-
-  const handleNewTodo = (newTodoVal) => {
-    console.log('ivesta reiksme', newTodoVal);
-    // dispach({ type: ACT.add, payload: newTodoVal });
-  };
-
-  const handleDone = (idToToggle) => {
-    console.log('handleDone', idToToggle);
-    // dispach({ type: ACT.toggle, payload: idToToggle });
-  };
-
-  // const handleUpdate = () => {};
-
   const all = state.length;
 
   const complete = state.filter((tObj) => tObj.isDone).length;
@@ -51,7 +35,7 @@ export default function TodoApp() {
 
       <ul className='flex flex-col gap-3 '>
         {state.map((tObj) => (
-          <OneTodo onDelete={handleDelete} onDone={handleDone} key={tObj.id} item={tObj} />
+          <OneTodo key={tObj.id} item={tObj} />
         ))}
       </ul>
     </div>
