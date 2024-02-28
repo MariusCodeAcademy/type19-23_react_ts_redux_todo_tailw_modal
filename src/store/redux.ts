@@ -22,6 +22,8 @@ const todosSlice = createSlice({
     addTodo() {},
     deleteTodo(state, action: PayloadAction<number>) {
       console.log('deleting todo', action.payload);
+      // trinam su filter
+      state.todosArr = state.todosArr.filter((tObj) => tObj.id !== action.payload);
     },
   },
 });
