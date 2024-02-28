@@ -1,4 +1,16 @@
-export default function Button({ onClick = () => {}, children, outline, type = 'button' }) {
+type ButtonProps = {
+  onClick: () => void;
+  children: string;
+  outline: boolean;
+  type: 'button' | 'submit' | 'reset';
+};
+
+export default function Button({
+  onClick = () => {},
+  children,
+  outline,
+  type = 'button',
+}: ButtonProps) {
   return (
     <button
       onClick={onClick}
