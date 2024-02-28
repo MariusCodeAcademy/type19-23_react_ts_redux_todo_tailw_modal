@@ -1,6 +1,11 @@
+import { TodoType } from '../../types/types';
 import Button from '../UI/Button';
 
-export default function OneTodo({ item, onDelete, onDone }) {
+type OneTodoProps = {
+  item: TodoType;
+};
+
+export default function OneTodo({ item }: OneTodoProps) {
   return (
     <li className='grid grid-cols-4 gap-2'>
       <div className=''>
@@ -17,8 +22,8 @@ export default function OneTodo({ item, onDelete, onDone }) {
         </span>{' '}
       </div>
 
-      <Button onClick={() => onDelete(item.id)}>Delete</Button>
-      <Button onClick={() => onDone(item.id)} outline>
+      <Button onClick={() => {}}>Delete</Button>
+      <Button onClick={() => {}} outline>
         {item.isDone ? 'Undo' : 'Complete'}
       </Button>
       <Button>Edit</Button>
