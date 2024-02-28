@@ -1,11 +1,17 @@
 import { useState } from 'react';
 import Button from '../UI/Button';
+import { useDispatch } from 'react-redux';
+import { todoActions } from '../../store/redux';
 
 export default function AddTodo() {
   const [newTodoVal, setNewTodoVal] = useState('');
 
+  const dispatch = useDispatch();
+
   const addTodoHandler = () => {
     // onNewTodo(newTodoVal);
+    if (newTodoVal.trim() === '') return;
+    dispatch(todoActions.addTodo(newTodoVal));
     // dispatch su redux ir paduodam newTodoVal
     setNewTodoVal('');
   };

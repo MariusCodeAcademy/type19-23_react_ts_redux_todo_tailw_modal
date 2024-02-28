@@ -22,7 +22,16 @@ const todosSlice = createSlice({
   initialState: initTodos,
   reducers: {
     addTodo(state, action: PayloadAction<string>) {
+      const newTitle = action.payload;
+      console.log('add todo', newTitle);
       // pasiimti title reiksme is payload
+      const newTodoObj: TodoType = {
+        id: lastId++,
+        isDone: false,
+        title: newTitle,
+      };
+      // state.todosArr = [...state.todosArr, newTodoObj];
+      state.todosArr.push(newTodoObj);
       // sukurti nauja todo Obj
       // ikelti tObj i state
     },
@@ -31,6 +40,8 @@ const todosSlice = createSlice({
       // trinam su filter
       state.todosArr = state.todosArr.filter((tObj) => tObj.id !== action.payload);
     },
+    toggleTodo() {},
+    editTodo() {},
   },
 });
 
