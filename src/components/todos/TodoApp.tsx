@@ -3,6 +3,10 @@ import { useReducer, useState } from 'react';
 import OneTodo from './OneTodo';
 import AddTodo from './AddTodo';
 
+// aprasyti tipa initTodos
+
+// iskelti initTodos i store/redux.ts
+
 const initTodos = [
   { id: 1, title: 'Pull ups', isDone: false },
   { id: 2, title: 'Read a book', isDone: true },
