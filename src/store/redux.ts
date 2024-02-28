@@ -40,7 +40,13 @@ const todosSlice = createSlice({
       // trinam su filter
       state.todosArr = state.todosArr.filter((tObj) => tObj.id !== action.payload);
     },
-    toggleTodo() {},
+    toggleTodo(state, action: PayloadAction<number>) {
+      console.log('toggle', action.payload);
+      const idToToggle = action.payload;
+      const found = state.todosArr.find((tObj) => tObj.id === idToToggle);
+      if (!found) return;
+      found.isDone = !found.isDone;
+    },
     editTodo() {},
   },
 });

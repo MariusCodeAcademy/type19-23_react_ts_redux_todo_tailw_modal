@@ -14,6 +14,10 @@ export default function OneTodo({ item }: OneTodoProps) {
     dispatch(todoActions.deleteTodo(id));
   };
 
+  const handleToggle = () => {
+    dispatch(todoActions.toggleTodo(item.id));
+  };
+
   return (
     <li className='grid grid-cols-4 gap-2'>
       <div className=''>
@@ -31,7 +35,7 @@ export default function OneTodo({ item }: OneTodoProps) {
       </div>
 
       <Button onClick={() => handleDelete(item.id)}>Delete</Button>
-      <Button onClick={() => {}} outline>
+      <Button onClick={handleToggle} outline>
         {item.isDone ? 'Undo' : 'Complete'}
       </Button>
       <Button>Edit</Button>
