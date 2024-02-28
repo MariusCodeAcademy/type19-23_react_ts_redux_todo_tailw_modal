@@ -1,4 +1,4 @@
-import Button from '../counter/UI/Button';
+import Button from '../UI/Button';
 
 export default function OneTodo({ item, onDelete, onDone }) {
   return (

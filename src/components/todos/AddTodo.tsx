@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Button from '../counter/UI/Button';
+import Button from '../UI/Button';
 
 export default function AddTodo({ onNewTodo }) {
   const [newTodoVal, setNewTodoVal] = useState('');
