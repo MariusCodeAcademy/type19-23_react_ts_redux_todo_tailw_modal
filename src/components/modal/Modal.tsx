@@ -3,7 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store/redux';
 import { modalActions } from '../../store/_modal';
 
-function Modal() {
+type ModalProps = {
+  confirm?: () => void;
+};
+
+function Modal({ confirm }: ModalProps) {
   const toShow = useSelector((state: RootState) => state.modal.toShow);
   const text = useSelector((state: RootState) => state.modal.text);
 
@@ -13,11 +17,16 @@ function Modal() {
 
   if (toShow === false) return null;
 
+  const handleConfirm = () => {
+    dispatch(modalActions.success());
+    confirm && confirm();
+  };
+
   return (
     <div>
       <div
         onClick={() => dispatch(modalActions.hide())}
-        className='backdrop bg-slate-500/30 fixed inset-0'></div>
+        className='backdrop bg-slate-500/30 fixed inset-0 '></div>
       <div className='bg-white border rounded-lg px-10 py-7 w-96 fixed top-10 left-1/2 -translate-x-1/2'>
         <h2 className='text-lg font-semibold mb-3'>Modal</h2>
         <p className='text-lg mb-5'>{text}</p>
@@ -28,7 +37,7 @@ function Modal() {
             Close
           </button>
           <button
-            onClick={() => dispatch(modalActions.success())}
+            onClick={handleConfirm}
             className='px-3 py-1 text-sm uppercase border font-semibold border-green-500 rounded-md'>
             Confirm
           </button>
