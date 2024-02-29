@@ -11,9 +11,11 @@ const modalSlice = createSlice({
   name: 'modal',
   initialState: initModalState,
   reducers: {
-    show(state, action: PayloadAction<string>) {
+    show(state, action: PayloadAction<{ msg: string; action: () => void }>) {
+      console.log('action ===', action);
       state.toShow = true;
-      state.text = action.payload;
+      state.text = action.payload.msg;
+      action.payload.action();
     },
     hide(state) {
       state.toShow = false;

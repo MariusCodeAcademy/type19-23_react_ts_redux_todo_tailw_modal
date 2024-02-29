@@ -15,7 +15,12 @@ export default function OneTodo({ item }: OneTodoProps) {
   console.log('modalSucess ===', modalSucess);
 
   const handleDelete = () => {
-    dispatch(modalActions.show(`Are you sure you want to delete? ${item.id}`));
+    const obj = {
+      msg: `Are you sure you want to delete? ${item.id}`,
+      action: dispatch(todoActions.toggleTodo(item.id)),
+    };
+
+    dispatch(modalActions.show(obj));
     // ar sekme ar ne
 
     // dispatch(todoActions.deleteTodo(item.id));
@@ -27,7 +32,6 @@ export default function OneTodo({ item }: OneTodoProps) {
 
   return (
     <>
-      <Modal confirm={() => dispatch(todoActions.deleteTodo(item.id))} />
       <li className='grid grid-cols-4 gap-2'>
         <div className=''>
           <span
